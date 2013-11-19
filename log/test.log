@@ -1,0 +1,183 @@
+  [1m[36m (32.6ms)[0m  [1mCREATE TABLE "customers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "surname" varchar(255), "email" varchar(255), "phone" varchar(255), "adress" varchar(255), "otelid" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (4.9ms)[0m  CREATE TABLE "otels" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "Oname" varchar(255), "Oemail" varchar(255), "Ophone" varchar(255), "Oadress" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (3.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (3.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131112183156')
+  [1m[36m (3.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131112182421')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "customers"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "customers" ("name", "surname", "email", "phone", "adress", "otelid", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2013-11-13 23:52:17', '2013-11-13 23:52:17', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "customers" ("name", "surname", "email", "phone", "adress", "otelid", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 1, '2013-11-13 23:52:17', '2013-11-13 23:52:17', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "otels"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "otels" ("Oname", "Oemail", "Ophone", "Oadress", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-11-13 23:52:17', '2013-11-13 23:52:17', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "otels" ("Oname", "Oemail", "Ophone", "Oadress", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2013-11-13 23:52:17', '2013-11-13 23:52:17', 298486374)
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------------------
+CustomersControllerTest: test_should_create_customer
+----------------------------------------------------
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "customers"
+Processing by CustomersController#create as HTML
+  Parameters: {"customer"=>{"adress"=>"MyString", "email"=>"MyString", "name"=>"MyString", "otelid"=>"1", "phone"=>"MyString", "surname"=>"MyString"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (84.2ms)[0m  INSERT INTO "customers" ("adress", "created_at", "email", "name", "otelid", "phone", "surname", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["adress", "MyString"], ["created_at", Wed, 13 Nov 2013 23:52:18 UTC +00:00], ["email", "MyString"], ["name", "MyString"], ["otelid", 1], ["phone", "MyString"], ["surname", "MyString"], ["updated_at", Wed, 13 Nov 2013 23:52:18 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/customers/980190963
+Completed 302 Found in 92ms (ActiveRecord: 84.4ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "customers"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-----------------------------------------------------
+CustomersControllerTest: test_should_destroy_customer
+-----------------------------------------------------
+  [1m[36mCustomer Load (0.1ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "customers"
+Processing by CustomersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "customers" WHERE "customers"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/customers
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "customers"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+CustomersControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[35mCustomer Load (0.1ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CustomersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered customers/_form.html.erb (59.2ms)
+Completed 500 Internal Server Error in 123ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+CustomersControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (0.1ms)[0m  [1mSELECT "customers".* FROM "customers"[0m
+Completed 200 OK in 1427ms (Views: 1426.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+CustomersControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[35mCustomer Load (0.1ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CustomersController#new as HTML
+  Rendered customers/_form.html.erb (4.7ms)
+Completed 500 Internal Server Error in 7ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------------
+CustomersControllerTest: test_should_show_customer
+--------------------------------------------------
+  [1m[36mCustomer Load (0.1ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCustomer Load (0.1ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1  [["id", "980190962"]]
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------------------
+CustomersControllerTest: test_should_update_customer
+----------------------------------------------------
+  [1m[36mCustomer Load (0.1ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CustomersController#update as HTML
+  Parameters: {"customer"=>{"adress"=>"MyString", "email"=>"MyString", "name"=>"MyString", "otelid"=>"1", "phone"=>"MyString", "surname"=>"MyString"}, "id"=>"980190962"}
+  [1m[35mCustomer Load (0.1ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/customers/980190962
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+OtelsControllerTest: test_should_create_otel
+--------------------------------------------
+  [1m[36mOtel Load (0.2ms)[0m  [1mSELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "otels"
+Processing by OtelsController#create as HTML
+  Parameters: {"otel"=>{"Oadress"=>"MyString", "Oemail"=>"MyString", "Oname"=>"MyString", "Ophone"=>"MyString"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "otels" ("Oadress", "Oemail", "Oname", "Ophone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["Oadress", "MyString"], ["Oemail", "MyString"], ["Oname", "MyString"], ["Ophone", "MyString"], ["created_at", Wed, 13 Nov 2013 23:52:19 UTC +00:00], ["updated_at", Wed, 13 Nov 2013 23:52:19 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/otels/980190963
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "otels"
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------
+OtelsControllerTest: test_should_destroy_otel
+---------------------------------------------
+  [1m[36mOtel Load (0.1ms)[0m  [1mSELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "otels"
+Processing by OtelsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mOtel Load (0.1ms)[0m  [1mSELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "otels" WHERE "otels"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/otels
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "otels"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-----------------------------------------
+OtelsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mOtel Load (0.1ms)[0m  SELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by OtelsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mOtel Load (0.1ms)[0m  [1mSELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  Rendered otels/_form.html.erb (4.1ms)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+OtelsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35mOtel Load (0.1ms)[0m  SELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by OtelsController#index as HTML
+  [1m[36mOtel Load (0.2ms)[0m  [1mSELECT "otels".* FROM "otels"[0m
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------
+OtelsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35mOtel Load (0.1ms)[0m  SELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by OtelsController#new as HTML
+  Rendered otels/_form.html.erb (3.3ms)
+Completed 200 OK in 13ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------
+OtelsControllerTest: test_should_show_otel
+------------------------------------------
+  [1m[36mOtel Load (0.1ms)[0m  [1mSELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by OtelsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mOtel Load (0.1ms)[0m  SELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1  [["id", "980190962"]]
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+OtelsControllerTest: test_should_update_otel
+--------------------------------------------
+  [1m[36mOtel Load (0.1ms)[0m  [1mSELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by OtelsController#update as HTML
+  Parameters: {"otel"=>{"Oadress"=>"MyString", "Oemail"=>"MyString", "Oname"=>"MyString", "Ophone"=>"MyString"}, "id"=>"980190962"}
+  [1m[35mOtel Load (0.1ms)[0m  SELECT "otels".* FROM "otels" WHERE "otels"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/otels/980190962
+Completed 302 Found in 5ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

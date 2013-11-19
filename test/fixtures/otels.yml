@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Oname: MyString
+  Oemail: MyString
+  Ophone: MyString
+  Oadress: MyString
+
+two:
+  Oname: MyString
+  Oemail: MyString
+  Ophone: MyString
+  Oadress: MyString

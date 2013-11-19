@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>deded</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<h1>OTELS</h1>
+
+<table class="list">
+  <thead>
+    <tr>
+      <th>Otel Name</th>
+      <th>Otel Email</th>
+      <th>Otel Phone</th>
+      <th>Otel Adress</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @otels.each do |otel| %>
+      <tr>
+        <td><%= otel.Oname %></td>
+        <td><%= otel.Oemail %></td>
+        <td><%= otel.Ophone %></td>
+        <td><%= otel.Oadress %></td>
+        <td><%= link_to 'Show', otel %></td>
+        <td><%= link_to 'Edit', edit_otel_path(otel) %></td>
+        <td><%= link_to 'Destroy', otel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Otel', new_otel_path %>
+
+</body>
+</html>

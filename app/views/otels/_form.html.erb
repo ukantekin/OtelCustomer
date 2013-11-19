@@ -1,0 +1,33 @@
+<%= form_for(@otel) do |f| %>
+  <% if @otel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@otel.errors.count, "error") %> prohibited this otel from being saved:</h2>
+
+      <ul>
+      <% @otel.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Otel Name" %><br>
+    <%= f.text_field :Oname %>
+  </div>
+  <div class="field">
+    <%= f.label "Otel email"%><br>
+    <%= f.text_field :Oemail %>
+  </div>
+  <div class="field">
+    <%= f.label "Phone" %><br>
+    <%= f.text_field :Ophone %>
+  </div>
+  <div class="field">
+    <%= f.label "Adress" %><br>
+    <%= f.text_field :Oadress %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

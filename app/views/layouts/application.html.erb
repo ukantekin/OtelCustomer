@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTELCUSTOMER</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+   <%= stylesheet_link_tag "style.css" %>
+</head>
+<body>
+	<div id="header">OTEL ON RAILS</div>
+	<div id="menu">
+		<ul>
+			<li><%= link_to "Otels",otels_path , :class=>"menulink" %></li>
+			<li><%= link_to "Customer",customers_path, :class=>"menulink" %></li>
+		</ul>
+	</div>
+
+<%= yield %>
+
+</body>
+</html>
